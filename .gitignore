@@ -1,0 +1,190 @@
+# ============================================================
+# PYTHON - General
+# ============================================================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+develop-eggs/
+.eggs/
+
+pip-wheel-metadata/
+share/python-wheels/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Python tools
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+.cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ============================================================
+# DJANGO
+# ============================================================
+
+# SQLite
+*.sqlite3
+*.sqlite3-journal
+
+# Django static/media
+staticfiles/
+media/
+
+# Django local settings
+local_settings.py
+
+# ============================================================
+# ODOO
+# ============================================================
+
+# Odoo cache / Python cache
+__pycache__/
+*.pyc
+
+# Odoo logs
+*.log
+
+# Odoo filestore
+filestore/
+
+# Odoo sessions
+sessions/
+
+# Odoo generated files
+*.pyo
+
+# ============================================================
+# DATABASES / LOCAL DATA
+# ============================================================
+
+*.db
+*.sqlite
+*.sqlite3
+
+# PostgreSQL dumps
+*.sql
+*.dump
+*.backup
+
+# ============================================================
+# ENVIRONMENT / SECRETS
+# ============================================================
+
+.env
+.env.*
+!.env.example
+
+*.secret
+secrets.json
+config.local.*
+credentials.json
+
+# ============================================================
+# IDE / EDITORS
+# ============================================================
+
+.vscode/
+.idea/
+*.code-workspace
+
+# VS Code local history
+.history/
+
+# PyCharm
+*.iml
+
+# ============================================================
+# OPERATING SYSTEM
+# ============================================================
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+.directory
+
+# macOS
+.DS_Store
+
+# ============================================================
+# TEMPORARY FILES
+# ============================================================
+
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.orig
+
+# ============================================================
+# LOGS
+# ============================================================
+
+*.log
+logs/
+
+# ============================================================
+# NODE / FRONTEND
+# Útil para proyectos Django/Odoo con frontend
+# ============================================================
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ============================================================
+# ODOO / PROYECTOS LOCALES
+# ============================================================
+
+*.pid
+*.pidfile
+
+# Configuraciones locales
+odoo.conf
+*.conf.local
+
+# ============================================================
+# TEST / REPORTES GENERADOS
+# ============================================================
+
+.pytest_cache/
+htmlcov/
+coverage/
+
+# ============================================================
+# ARCHIVOS GENERADOS
+# ============================================================
+
+*.generated
+*.cache
