@@ -1,0 +1,41 @@
+class Gerrero:
+    nombre : str
+    __poder : int
+    
+    def __init__(self, nombre : str, poder : int):
+        self.nombre = nombre
+        self.__poder = poder
+        
+    def get_poder(self):
+        return self.__poder
+    
+vegeta = Gerrero("vegeta", 8000)
+print("Guerrero:", vegeta.nombre)
+print("Poder:", vegeta.get_poder())
+
+class CuentaZeni:
+    titular: str
+    __saldo: int
+    
+    def __init__(self, titutal: str, saldo: int):
+        self.titular = titutal
+        self.__saldo = saldo
+        
+    def get_saldo(self):
+        return self.__saldo
+    
+    def retirar_dinero(self, cantidad: int):
+        if cantidad > 0 and cantidad <= self.__saldo:
+            self.__saldo -= cantidad
+            print("Retiro realizado", cantidad)
+            
+        else:
+            print("Retiro no permitido")
+            
+cuenta = CuentaZeni("Mr. Satan", 5000)
+print("Titular:", cuenta.titular)
+print("Saldo inicial:", cuenta.get_saldo())
+cuenta.retirar_dinero(500)
+print("Saldo final:", cuenta.get_saldo())
+
+print("-" * 50)
