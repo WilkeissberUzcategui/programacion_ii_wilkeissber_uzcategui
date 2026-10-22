@@ -43,3 +43,20 @@ def my_first_template(request):
         "mensaje": "Organiza tus proyectos y tareas en un solo lugar",
     }
     return render(request, "tasks/my_first_template.html", contexto)
+
+def leads_like(request):
+    contex = {
+        "titulo" : "taskflow",
+        "nombre" : "Wilkeissber",
+        "apellido" : "Uzcátegui"
+    }
+    return render(request,
+                  "leads/leads-like.html",
+                  contex
+                  )
+
+def base_triangulo(request, base, altura):
+    """Registro usuario"""
+    resultado = base*altura/2
+    return HttpResponse(
+        f"El àrea de un triagulo es: {resultado}")

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEON CITY | Cyberpunk</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #080811;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        /* BARRA DE NAVEGACIÓN */
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 8%;
+            background: #0d0d19;
+            border-bottom: 1px solid #ff00ff;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #00ffff;
+            text-shadow: 0 0 12px #00ffff;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+
+        /* PORTADA */
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(8, 8, 17, 0.55),
+                    rgba(8, 8, 17, 0.95)
+                ),
+                url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1920&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 8vw, 85px);
+            text-transform: uppercase;
+            color: #ffffff;
+            text-shadow:
+                0 0 10px #ff00ff,
+                0 0 30px #ff00ff;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #c9c9df;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        .boton {
+            display: inline-block;
+            padding: 15px 35px;
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            background: #00ffff;
+            color: #080811;
+            box-shadow: 0 0 25px #00ffff;
+        }
+
+        /* SECCIÓN */
+
+        section {
+            padding: 80px 8%;
+        }
+
+        .titulo {
+            text-align: center;
+            font-size: 35px;
+            margin-bottom: 45px;
+            color: #ff00ff;
+            text-shadow: 0 0 15px #ff00ff;
+        }
+
+        /* TARJETAS */
+
+        .contenedor {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(230px, 1fr)
+            );
+            gap: 25px;
+        }
+
+        .tarjeta {
+            background: #11111f;
+            border: 1px solid #292943;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-10px);
+            border-color: #00ffff;
+            box-shadow: 0 0 20px #00ffff33;
+        }
+
+        .icono {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .tarjeta h3 {
+            color: #00ffff;
+            margin-bottom: 15px;
+        }
+
+        .tarjeta p {
+            color: #aaaac1;
+            line-height: 1.7;
+        }
+
+        /* CIUDAD */
+
+        .ciudad {
+            text-align: center;
+            background: #0d0d19;
+            border-top: 1px solid #ff00ff;
+            border-bottom: 1px solid #00ffff;
+        }
+
+        .ciudad p {
+            max-width: 700px;
+            margin: auto;
+            color: #c9c9df;
+            line-height: 1.8;
+        }
+
+        /* PIE DE PÁGINA */
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #080811;
+            color: #77778e;
+        }
+
+        footer span {
+            color: #00ffff;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav a {
+                margin: 0 8px;
+                font-size: 14px;
+            }
+
+            section {
+                padding: 60px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">NEON CITY</div>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#tecnologia">Tecnología</a>
+            <a href="#ciudad">La ciudad</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+
+                <h1>NEON CITY</h1>
+                <h2>
+                    {{titulo}}
+                    {{nombre}}
+                    {{apellido}}
+                </h2>
+
+
+                <p>
+                    Bienvenido a una ciudad donde la tecnología
+                    controla el futuro, las luces nunca se apagan
+                    y la humanidad lucha por sobrevivir.
+                </p>
+
+                <a href="#tecnologia" class="boton">
+                    Explorar el futuro
+                </a>
+
+            </div>
+        </section>
+
+        <section id="tecnologia">
+
+            <h2 class="titulo">EL FUTURO ES AHORA</h2>
+
+            <div class="contenedor">
+
+                <article class="tarjeta">
+                    <div class="icono">🤖</div>
+
+                    <h3>Inteligencia Artificial</h3>
+
+                    <p>
+                        Máquinas inteligentes que transforman
+                        la sociedad y redefinen los límites
+                        de la humanidad.
+                    </p>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="icono">⚡</div>
+
+                    <h3>Cyberimplantes</h3>
+
+                    <p>
+                        Tecnología avanzada integrada en el
+                        cuerpo humano para superar sus
+                        limitaciones naturales.
+                    </p>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="icono">🌐</div>
+
+                    <h3>Ciberespacio</h3>
+
+                    <p>
+                        Un universo digital donde los datos,
+                        las identidades y la información
+                        tienen un poder incalculable.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+        <section class="ciudad" id="ciudad">
+
+            <h2 class="titulo">BIENVENIDO AL CAOS</h2>
+
+            <p>
+                Año 2077. Los rascacielos dominan el horizonte,
+                las megacorporaciones controlan la economía
+                y las calles están iluminadas por anuncios
+                holográficos. En este mundo, tu identidad
+                es tu mayor tesoro y la información es poder.
+            </p>
+
+            <br><br>
+
+            <a href="#inicio" class="boton">
+                Volver al inicio
+            </a>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>
+            © 2077 <span>NEON CITY</span> |
+            El futuro pertenece a quienes se atreven.
+        </p>
+    </footer>
+
+</body>
+</html>
