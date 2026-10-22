@@ -12,5 +12,8 @@ urlpatterns = [
          views.greeting, name="saludo"),
     path("destinatario/<str:titulo>/<str:nombre>/<str:cargo>/",
          views.destinatario, name="destinatario"),
-    path("my_first_template", views.my_first_template, name="my_first_template")
+    path("my_first_template", views.my_first_template, name="my_first_template"),
+    path("leads_like", views.leads_like, name="leads_like"),
+    path("base_triangulo/<int:base>/<int:altura>/",
+         views.base_triangulo, name="base_triangulo"),
     ]
