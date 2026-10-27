@@ -8,7 +8,7 @@ class Project(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.name
+        return self.description
 
 class autobus(models.Model):
     aerolinea = models.CharField(max_length=100)
