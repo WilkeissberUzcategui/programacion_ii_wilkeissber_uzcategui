@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 # Create your views here.
 from django.http import HttpResponse
+
+from tasks.forms import ProjectForm
+from tasks.models import Project
 
 
 def home(request):
@@ -60,3 +63,25 @@ def base_triangulo(request, base, altura):
     resultado = base*altura/2
     return HttpResponse(
         f"El àrea de un triagulo es: {resultado}")
+
+
+
+def project_lista(request):
+    contexto = {
+        "titulo": "TaskFlow",
+        "mensaje": "Organiza tus proyectos y tareas en un solo lugar",
+        "projects": Project.objects.order_by("-created_at"),
+    }
+    return render(request, "projects/projects.html", contexto)
+
+
+def project_create(request):
+    if request.method == "POST":
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            task = form.save()
+            return redirect("tasks:projects-list")
+    else:
+        form = ProjectForm()
+
+    return render(request, "projects/project_form.html", {"form": form, "modo": "crear"})

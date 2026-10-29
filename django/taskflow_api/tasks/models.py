@@ -8,7 +8,7 @@ class Project(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.description
+        return self.name
 
 class Task(models.Model):
     class Status(models.TextChoices):
@@ -107,3 +107,4 @@ class Participacion(models.Model):
                                   on_delete=models.CASCADE)
     rol = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
+
