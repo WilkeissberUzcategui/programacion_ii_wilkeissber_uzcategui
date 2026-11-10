@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Crear categoría</title>
+    <title>{% if form.instance.pk %}Editar categoía{% else %}Crear categoría{% endif %}</title>
 </head>
 <body>
     <h1>Biblioteca</h1>
