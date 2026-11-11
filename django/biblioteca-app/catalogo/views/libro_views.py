@@ -1,13 +1,47 @@
+from django.db.models import Q
 from django.shortcuts import render, redirect
+from catalogo.models.categoria import Categoria
 from catalogo.models.libro import Libro
 from catalogo.forms.libro_form import LibroForm
+from django.contrib.auth.decorators import login_required, permission_required
 
+
+@login_required
+@permission_required('catalogo.view_libro', raise_exception=True)
 def libro_list(request):
-    libros = Libro.objects.all()
-    return render(request, 
-                  'catalogo/libros/libro_list.html', 
-                  {'libros': libros})
+    pista = request.GET.get('pista', '').strip()
+    categoria_id = request.GET.get('categoria_id', '').strip()
 
+    libros = Libro.objects.all()
+
+    if pista:
+        libros = libros.filter(
+            Q(titulo__icontains=pista) |
+            Q(autor__icontains=pista) |
+            Q(categoria__nombre__icontains=pista)
+        )
+
+    if categoria_id:
+        libros = libros.filter(categoria_id=categoria_id)
+
+    categorias = Categoria.objects.all()
+
+    contexto = {
+        'libros': libros,
+        'categorias': categorias,
+        'pista': pista,
+        'categoria_id': categoria_id
+    }
+
+    return render(
+        request,
+        'catalogo/libros/libro_list.html',
+        contexto
+    )
+
+
+@login_required
+@permission_required('catalogo.add_libro', raise_exception=True)
 def create_libro(request):
     if request.method == 'POST':
         form = LibroForm(request.POST)
@@ -20,6 +54,8 @@ def create_libro(request):
                   'catalogo/libros/formulario.html', 
                   {'form': form})
 
+@login_required
+@permission_required('catalogo.change_libro', raise_exception=True)
 def update_libro(request, pk):
     libro = Libro.objects.get(pk=pk)
     if request.method == 'POST':
@@ -33,6 +69,8 @@ def update_libro(request, pk):
                   'catalogo/libros/formulario.html', 
                   {'form': form})
 
+@login_required
+@permission_required('catalogo.delete_libro', raise_exception=True)
 def delete_libro(request, pk):
     libro = Libro.objects.get(pk=pk)
     if request.method == 'POST':
