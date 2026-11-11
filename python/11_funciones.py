@@ -36,7 +36,7 @@ print("-" * 50)
 def nave_preparada(combustible):
     return combustible >= 50
 
-if nave_preparada(80):
+if nave_preparada(30):
     print("Nave autorizada para despegar")
     
 else:

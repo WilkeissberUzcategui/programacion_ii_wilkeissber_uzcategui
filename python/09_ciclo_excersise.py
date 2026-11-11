@@ -25,7 +25,7 @@ naves_recargadas = 0
 total_droides = 0
 total_ciclos = 0
 
-for numero, nave in enumerate(naves, start=1):
+for numero, nave in enumerate(naves, start=5):
     print(f"--- Nave : {numero} - {nave}")
     if nave["combustible"] >=50:
         print("Estado inicial: LISTA")
