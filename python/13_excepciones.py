@@ -51,7 +51,7 @@ def validar_energia(energia):
     return energia
 
 try:
-    resultado = validar_energia(60)
+    resultado = validar_energia(50)
     print("Energia", resultado)
 except (TypeError, ValueError) as error:
     print("Error:", error)
