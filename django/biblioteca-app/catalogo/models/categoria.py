@@ -11,3 +11,4 @@ class Categoria(models.Model):
         verbose_name = "Categoría"
         verbose_name_plural = "Categorías"
         ordering = ['nombre']
+        
