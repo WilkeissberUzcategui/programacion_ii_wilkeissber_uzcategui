@@ -1,16 +1,33 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
 </head>
 <body>
+
     <h1>Bienvenido a la Biblioteca</h1>
+
+    {% if user.is_authenticated %}
+        <p>Usuario: {{ user.username }}</p>
+
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Cerrar sesión</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}">Iniciar sesión</a>
+        <a href="{% url 'registro' %}">Crear cuenta</a>
+    {% endif %}
+
     <p>Explora nuestra colección de libros.</p>
+
     <ul>
         <li><a href="{% url 'libro_list' %}">Ver Lista de Libros</a></li>
         <li><a href="{% url 'categoria_list' %}">Ver Lista de Categorías</a></li>
     </ul>
+
 </body>
 </html>
