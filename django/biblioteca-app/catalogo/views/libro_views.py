@@ -11,18 +11,13 @@ from django.contrib.auth.decorators import login_required, permission_required
 def libro_list(request):
     pista = request.GET.get('pista', '').strip()
     categoria_id = request.GET.get('categoria_id', '').strip()
-
-    libros = Libro.objects.all()
-
+    libros = Libro.objects.select_related('categoria').all()
     if pista:
         libros = libros.filter(
             Q(titulo__icontains=pista) |
             Q(autor__icontains=pista) |
             Q(categoria__nombre__icontains=pista)
         )
-
-    if categoria_id:
-        libros = libros.filter(categoria_id=categoria_id)
 
     categorias = Categoria.objects.all()
 

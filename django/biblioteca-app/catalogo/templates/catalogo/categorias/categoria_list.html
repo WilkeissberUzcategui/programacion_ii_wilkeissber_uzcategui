@@ -1,75 +1,75 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Listado de categorías</title>
-</head>
-<body>
-    <h1>Biblioteca</h1>
-    <h2>Listado de categorías</h2>
 
-    {% if messages %}
-        {% for mensaje in messages %}
-            <p>{{ mensaje }}</p>
-        {% endfor %}
+<html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Lista de Categorías</title> </head> <body>
+
+<center>
+    <h1>Biblioteca</h1>
+    <h2>Lista de Categorías</h2>
+</center>
+
+<hr>
+
+{% if messages %}
+    {% for mensaje in messages %}
+        <p>{{ mensaje }}</p>
+    {% endfor %}
+{% endif %}
+
+<p>
+    {% if perms.catalogo.add_categoria %}
+        <button>
+            <a href="{% url 'categoria_create' %}">Nueva Categoría</a>
+        </button>
     {% endif %}
 
-    <p>
-        {% if perms.catalogo.add_categoria %}
-            <button>
-                <a href="{% url 'categoria_create' %}">
-                    Nueva categoría
-                </a>
-            </button>
-        {% endif %}
+    <button>
+        <a href="{% url 'home' %}">Atrás</a>
+    </button>
 
-        <button>
-            <a href="{% url 'home' %}">Atrás</a>
-        </button>
+    <button>
+        <a href="{% url 'libro_list' %}">Lista de Libros</a>
+    </button>
+</p>
 
-        <button>
-            <a href="{% url 'libro_list' %}">Lista de Libros</a>
-        </button>
-    </p>
+<hr>
 
-    <table border="1" cellpadding="8">
-        <thead>
+<h3>Categorías Registradas</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for categoria in categorias %}
             <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Acciones</th>
+                <td>{{ categoria.id }}</td>
+                <td>{{ categoria.nombre }}</td>
+                <td>{{ categoria.descripcion }}</td>
+                <td>
+                    {% if perms.catalogo.change_categoria %}
+                        <a href="{% url 'categoria_update' categoria.id %}">Editar</a>
+                    {% endif %}
+
+                    {% if perms.catalogo.delete_categoria %}
+                        |
+                        <a href="{% url 'categoria_delete' categoria.id %}">Eliminar</a>
+                    {% endif %}
+                </td>
             </tr>
-        </thead>
+        {% empty %}
+            <tr>
+                <td colspan="4" align="center">
+                    No existen categorías registradas.
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-        <tbody>
-            {% for categoria in categorias %}
-                <tr>
-                    <td>{{ categoria.id }}</td>
-                    <td>{{ categoria.nombre }}</td>
-                    <td>{{ categoria.descripcion }}</td>
-                    <td>
-                        {% if perms.catalogo.change_categoria %}
-                            <a href="{% url 'categoria_update' categoria.id %}">
-                                Editar
-                            </a>
-                        {% endif %}
-
-                        {% if perms.catalogo.delete_categoria %}
-                            <a href="{% url 'categoria_delete' categoria.id %}">
-                                Eliminar
-                            </a>
-                        {% endif %}
-                    </td>
-                </tr>
-            {% empty %}
-                <tr>
-                    <td colspan="4" style="text-align: center;">
-                        No existen categorías registradas.
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</body>
-</html>
+</body> </html>

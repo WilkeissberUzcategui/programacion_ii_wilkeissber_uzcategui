@@ -1,23 +1,37 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>{% if form.instance.pk %}Editar categoría{% else %}Crear categoría{% endif %}</title>
-</head>
-<body>
+
+<html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>{% if form.instance.pk %}Editar categoría{% else %}Crear categoría{% endif %}</title> </head> <body>
+
+<center>
     <h1>Biblioteca</h1>
-    <h2>{% if form.instance.pk %}Editar categoría{% else %}Registrar categoría{% endif %}</h2>
+    <h2>{% if form.instance.pk %}Editar Categoría{% else %}Registrar Categoría{% endif %}</h2>
+</center>
+
+<hr>
+
+<fieldset>
+    <legend>Datos de la Categoría</legend>
+
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <p>
-            <button type="submit">
-                Guardar categoría
-            </button>
-            <a href="{% url 'categoria_list' %}">
-                Cancelar
-            </a>
-        </p>
+
+        <table cellpadding="8" align="center">
+            {{ form.as_table }}
+
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit">Guardar Categoría</button>
+
+                    <button type="button">
+                        <a href="{% url 'categoria_list' %}">Cancelar</a>
+                    </button>
+                </td>
+            </tr>
+        </table>
+
     </form>
-</body>
-</html>
+</fieldset>
+
+<hr>
+
+</body> </html>

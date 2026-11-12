@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Libros</title>
-</head>
-<body>
-    <h1>Lista de Libros</h1>
 
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+<html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Lista de Libros</title> </head> <body>
 
+<center>
+    <h1>Biblioteca</h1>
+    <h2>Lista de Libros</h2>
+</center>
+
+<hr>
+
+{% if messages %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
+<p>
     {% if perms.catalogo.add_libro %}
         <button>
             <a href="{% url 'create_libro' %}">Crear Nuevo Libro</a>
@@ -25,48 +25,55 @@
     <button>
         <a href="{% url 'home' %}">Atrás</a>
     </button>
-    <h2>Buscar Libros</h2>
-    <form method="GET">
-        <p>
-            <label for="pista">
-                Buscar por titulo, autor o categoria
-            </label>
-            <input
-                type="text"
-                id="pista"
-                name="pista"
-                value="{{pista}}">
-        </p>
-        <p>
-            <label for="categoria">
-                Categoria
-            </label>
-            <select id="categoria" name="categoria">
-                <option value="">Todas las categorias</option>
-                {% for categoria in categorias %}
-                    <option value="{{ categoria.id }}" {% if categoria.id|stringformat:"s" == categoria_id %}selected{% endif %}>
-                        {{ categoria.nombre }}
-                    </option>
-                {% endfor %}
-            </select>
-        </p>
-    </form>
+
     <button>
         <a href="{% url 'categoria_list' %}">Lista de Categorías</a>
     </button>
+</p>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Título</th>
-                <th>Autor</th>
-                <th>Fecha de Publicación</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
+<hr>
 
-        <tbody>
-            {% for libro in libros %}
+<h3>Buscar Libros</h3>
+
+<form method="GET">
+    <p>
+        <label for="pista">Buscar por título, autor o categoría:</label>
+        <input type="text" id="pista" name="pista" value="{{ pista }}">
+    </p>
+
+    <p>
+        <label for="categoria">Categoría:</label>
+        <select id="categoria" name="categoria">
+            <option value="">Todas las categorías</option>
+
+            {% for categoria in categorias %}
+                <option value="{{ categoria.id }}"
+                {% if categoria.id|stringformat:"s" == categoria_id %}selected{% endif %}>
+                    {{ categoria.nombre }}
+                </option>
+            {% endfor %}
+        </select>
+    </p>
+
+    <button type="submit">Buscar</button>
+</form>
+
+<hr>
+
+<h3>Libros Registrados</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Fecha de Publicación</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for libro in libros %}
             <tr>
                 <td>{{ libro.titulo }}</td>
                 <td>{{ libro.autor }}</td>
@@ -77,25 +84,25 @@
                     {% endif %}
 
                     {% if perms.catalogo.delete_libro %}
+                        |
                         <a href="{% url 'delete_libro' libro.pk %}">Eliminar</a>
                     {% endif %}
                 </td>
             </tr>
-
-            {% empty %}
+        {% empty %}
             <tr>
-                <td colspan="4">No hay libros disponibles.</td>
+                <td colspan="4" align="center">No hay libros disponibles.</td>
             </tr>
-            {% endfor %}
-        </tbody>
+        {% endfor %}
+    </tbody>
 
-        <tfoot>
-            <tr>
-                <td colspan="4">
-                    Total de libros: {{ libros|length }}
-                </td>
-            </tr>
-        </tfoot>
-    </table>
-</body>
-</html>
+    <tfoot>
+        <tr>
+            <td colspan="4" align="center">
+                Total de libros: {{ libros|length }}
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+</body> </html>

@@ -1,22 +1,39 @@
-
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Registro</title>
-</head>
-<body>
 
-    <h1>Crear cuenta</h1>
+<html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Registro</title> </head> <body>
+
+<center>
+    <h1>Biblioteca</h1>
+    <h2>Crear Cuenta</h2>
+    <h3>Sistema de Gestión Biblioteca</h3>
+</center>
+
+<hr>
+
+<fieldset>
+    <legend>Registro de Usuario</legend>
 
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
 
-        <button type="submit">Registrarse</button>
+        <table cellpadding="8" align="center">
+            {{ form.as_table }}
+
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit">Registrarse</button>
+                </td>
+            </tr>
+        </table>
     </form>
 
-    <a href="{% url 'login' %}">Iniciar sesión</a>
+    <p align="center">
+        ¿Ya tienes una cuenta?
+        <a href="{% url 'login' %}">Iniciar sesión</a>
+    </p>
 
-</body>
-</html>
+</fieldset>
+
+<hr>
+
+</body> </html>
