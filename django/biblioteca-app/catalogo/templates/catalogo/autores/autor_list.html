@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Lista de Autores</title> </head> <body>
+
+<center>
+    <h1>Biblioteca</h1>
+    <h2>Lista de Autores</h2>
+</center>
+
+<hr>
+
+{% if messages %}
+    {% for mensaje in messages %}
+        <p>{{ mensaje }}</p>
+    {% endfor %}
+{% endif %}
+
+<p>
+    {% if perms.catalogo.add_autor %}
+        <button>
+            <a href="{% url 'autor_create' %}">Nueva Autores</a>
+        </button>
+    {% endif %}
+
+    <button>
+        <a href="{% url 'home' %}">Atrás</a>
+    </button>
+
+    <button>
+        <a href="{% url 'libro_list' %}">Lista de Libros</a>
+    </button>
+</p>
+
+<hr>
+
+<h3>Autores Registradas</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Apellido</th>
+            <th>Nacionalidad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for autor in autor %}
+            <tr>
+                <td>{{ autor.id }}</td>
+                <td>{{ autor.nombre }}</td>
+                <td>{{ autor.descripcion }}</td>
+                <td>
+                    {% if perms.catalogo.change_autor %}
+                        <a href="{% url 'autor_update' autor.id %}">Editar</a>
+                    {% endif %}
+
+                    {% if perms.catalogo.delete_autor %}
+                        |
+                        <a href="{% url 'autor_delete' autor.id %}">Eliminar</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4" align="center">
+                    No existen autor registradas.
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body> </html>

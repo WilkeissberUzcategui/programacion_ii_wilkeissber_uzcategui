@@ -1,23 +1,40 @@
-
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <h1>Control de Acceso</h1>
-    <h2>Sistema de Gestión Biblioteca</h2>
+
+<html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Iniciar Sesión</title> </head> <body>
+
+<center>
+    <h1>Biblioteca</h1>
+    <h2>Control de Acceso</h2>
+    <h3>Sistema de Gestión Biblioteca</h3>
+</center>
+
+<hr>
+
+<fieldset>
+    <legend>Iniciar Sesión</legend>
 
     {% if form.errors %}
-        <p style="color: red;">Nombre de usuario o contraseña incorrectos.</p>
+        <p>
+            Nombre de usuario o contraseña incorrectos.
+        </p>
     {% endif %}
 
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Iniciar Sesión</button>
+
+        <table cellpadding="8" align="center">
+            {{ form.as_table }}
+
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit">Iniciar Sesión</button>
+                </td>
+            </tr>
+        </table>
+
     </form>
-</body>
-</html>
+</fieldset>
+
+<hr>
+
+</body> </html>

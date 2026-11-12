@@ -1,33 +1,72 @@
-
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-</head>
-<body>
 
-    <h1>Bienvenido a la Biblioteca</h1>
+<html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Inicio</title> </head> <body>
 
-    {% if user.is_authenticated %}
-        <p>Usuario: {{ user.username }}</p>
-
-        <form method="POST" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <button type="submit">Cerrar sesión</button>
-        </form>
-    {% else %}
-        <a href="{% url 'login' %}">Iniciar sesión</a>
-        <a href="{% url 'registro' %}">Crear cuenta</a>
-    {% endif %}
-
+<center>
+    <h1>Biblioteca</h1>
+    <h2>Bienvenido a la Biblioteca</h2>
     <p>Explora nuestra colección de libros.</p>
+</center>
 
-    <ul>
-        <li><a href="{% url 'libro_list' %}">Ver Lista de Libros</a></li>
-        <li><a href="{% url 'categoria_list' %}">Ver Lista de Categorías</a></li>
-    </ul>
+<hr>
 
-</body>
-</html>
+{% if user.is_authenticated %}
+
+    <p align="right">
+        Usuario: <strong>{{ user.username }}</strong>
+    </p>
+
+    <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <p align="right">
+            <button type="submit">Cerrar sesión</button>
+        </p>
+    </form>
+
+{% else %}
+
+    <center>
+        <button>
+            <a href="{% url 'login' %}">Iniciar sesión</a>
+        </button>
+
+        <button>
+            <a href="{% url 'registro' %}">Crear cuenta</a>
+        </button>
+    </center>
+
+{% endif %}
+
+<hr>
+
+<fieldset>
+    <legend>Menú Principal</legend>
+
+    <center>
+        <h3>¿Qué deseas consultar?</h3>
+
+        <p>
+            <button>
+                <a href="{% url 'libro_list' %}">Ver Lista de Libros</a>
+            </button>
+        </p>
+
+        <p>
+            <button>
+                <a href="{% url 'categoria_list' %}">Ver Lista de Categorías</a>
+            </button>
+            <button>
+                <a href="{% url 'autor_list' %}">Ver Lista de autores</a>
+            </button>
+        </p>
+    </center>
+
+</fieldset>
+
+<hr>
+
+<center>
+    <p> Sistema de Gestión de Biblioteca </p>
+</center>
+
+</body> </html>

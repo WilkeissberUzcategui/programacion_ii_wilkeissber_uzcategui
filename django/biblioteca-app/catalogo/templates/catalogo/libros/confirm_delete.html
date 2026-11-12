@@ -1,17 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmar Eliminación</title>
-</head>
-<body>
-    <h1>Confirmar Eliminación</h1>
-    <p>¿Estás seguro de que quieres eliminar el libro "{{ libro.titulo }}"?</p>
+
+<html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Confirmar Eliminación</title> </head> <body>
+
+<center>
+    <h1>Biblioteca</h1>
+    <h2>Confirmar Eliminación de Libro</h2>
+</center>
+
+<hr>
+
+<fieldset>
+    <legend>Confirmación</legend>
+
+    <p>
+        ¿Estás seguro de que quieres eliminar el libro
+        <strong>"{{ libro.titulo }}"</strong>?
+    </p>
+
     <form method="POST">
         {% csrf_token %}
+
         <button type="submit">Sí, eliminar</button>
-        <a href="{% url 'libro_list' %}">Cancelar</a>
+
+        <a href="{% url 'libro_list' %}">
+            <button type="button">Cancelar</button>
+        </a>
     </form>
-</body>
-</html>
+
+</fieldset>
+
+<hr>
+
+</body> </html>

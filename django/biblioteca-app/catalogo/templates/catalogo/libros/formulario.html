@@ -1,20 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if form.instance.pk %}Editar Libro{% else %}Crear Libro{% endif %}</title>
-</head>
-<body>
-    <h1>{% if form.instance.pk %}Editar Libro{% else %}Crear Libro{% endif %}</h1>
+
+<html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>{% if form.instance.pk %}Editar Libro{% else %}Crear Libro{% endif %}</title> </head> <body>
+
+<center>
+    <h1>Biblioteca</h1>
+    <h2>{% if form.instance.pk %}Editar Libro{% else %}Registrar Libro{% endif %}</h2>
+</center>
+
+<hr>
+
+<fieldset>
+    <legend>Datos del Libro</legend>
+
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <p>
-            <button type="submit">
-                Guardar Libro
-            </button>
-        </p>
+
+        <table cellpadding="8" align="center">
+            {{ form.as_table }}
+
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit">Guardar Libro</button>
+
+                    <button type="button">
+                        <a href="{% url 'libro_list' %}">Cancelar</a>
+                    </button>
+                </td>
+            </tr>
+        </table>
+
     </form>
-</body>
-</html>
+</fieldset>
+
+<hr>
+
+</body> </html>
