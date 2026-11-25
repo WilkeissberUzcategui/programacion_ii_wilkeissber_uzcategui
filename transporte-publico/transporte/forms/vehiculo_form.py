@@ -1,6 +1,5 @@
 from django import forms
-from transporte import Vehiculo
-
+from transporte.models import Vehiculo
 
 class VehiculoForm(forms.ModelForm):
     class Meta:

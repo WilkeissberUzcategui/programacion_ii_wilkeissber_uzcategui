@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, redirect, get_object_or_404
 from transporte.forms import VehiculoForm
-from transporte import Vehiculo
+from transporte.models import Vehiculo
 
 
 @login_required

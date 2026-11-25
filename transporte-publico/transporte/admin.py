@@ -1,6 +1,5 @@
 from django.contrib import admin
-from transporte import Parada, Conductor, Ruta, Vehiculo
-
+from transporte.models import Parada, Conductor, Ruta, Vehiculo
 
 @admin.register(Parada)
 class ParadaAdmin(admin.ModelAdmin):

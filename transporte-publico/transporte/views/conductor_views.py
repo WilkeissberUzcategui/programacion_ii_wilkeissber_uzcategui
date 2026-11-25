@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
-from transporte import Conductor
+from transporte.models import Conductor
 
 
 @login_required
