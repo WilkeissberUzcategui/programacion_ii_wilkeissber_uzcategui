@@ -1,0 +1,20 @@
+{% extends 'transporte/base.html' %}
+{% block content %}
+<h1>{{ vehiculo.placa }}</h1>
+<p>Tipo: {{ vehiculo.get_tipo_display }} · Capacidad: {{ vehiculo.capacidad }} · Activo: {{ vehiculo.activo|yesno:"Sí,No" }}</p>
+<p>Ruta: <a href="{{ vehiculo.ruta.get_absolute_url }}">{{ vehiculo.ruta }}</a></p>
+<p>Conductor:
+    {% if vehiculo.conductor %}
+    <a href="{{ vehiculo.conductor.get_absolute_url }}">{{ vehiculo.conductor }}</a>
+    {% else %}Sin asignar{% endif %}
+</p>
+<p>Creado por: {{ vehiculo.creado_por.username }}</p>
+
+{% if perms.transporte.change_vehiculo and vehiculo.creado_por == user or perms.transporte.delete_vehiculo %}
+<a href="{% url 'vehiculo_update' vehiculo.pk %}">Editar</a>
+{% endif %}
+{% if perms.transporte.delete_vehiculo %}
+<a href="{% url 'vehiculo_delete' vehiculo.pk %}">Eliminar</a>
+{% endif %}
+<a href="{% url 'vehiculo_list' %}">Volver</a>
+{% endblock %}

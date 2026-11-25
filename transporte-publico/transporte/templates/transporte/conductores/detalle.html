@@ -1,0 +1,15 @@
+{% extends 'transporte/base.html' %}
+{% block content %}
+<h1>{{ conductor.nombre }}</h1>
+<p>Licencia: {{ conductor.licencia }}</p>
+<p>Fecha de ingreso: {{ conductor.fecha_ingreso }}</p>
+<h2>Vehículos asignados</h2>
+<ul>
+    {% for vehiculo in conductor.vehiculos.all %}
+    <li><a href="{{ vehiculo.get_absolute_url }}">{{ vehiculo }}</a></li>
+    {% empty %}
+    <li>Ninguno.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'conductor_list' %}">Volver</a>
+{% endblock %}

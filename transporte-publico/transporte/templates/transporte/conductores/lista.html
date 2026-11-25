@@ -1,0 +1,11 @@
+{% extends 'transporte/base.html' %}
+{% block content %}
+<h1>Conductores</h1>
+<ul>
+    {% for conductor in conductores %}
+    <li><a href="{{ conductor.get_absolute_url }}">{{ conductor }}</a> — Licencia {{ conductor.licencia }}</li>
+    {% empty %}
+    <li>No hay conductores.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
