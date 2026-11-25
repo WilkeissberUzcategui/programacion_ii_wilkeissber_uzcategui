@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Transporte Público</title>
+</head>
+<body>
+<nav>
+    <a href="{% url 'ruta_list' %}">Rutas</a> |
+    <a href="{% url 'vehiculo_list' %}">Vehículos</a> |
+    <a href="{% url 'parada_list' %}">Paradas</a> |
+    <a href="{% url 'conductor_list' %}">Conductores</a> |
+    {% if user.is_authenticated %}
+        {{ user.username }}
+        <form method="post" action="{% url 'logout' %}" style="display:inline">
+            {% csrf_token %}
+            <button type="submit">Salir</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}">Entrar</a> |
+        <a href="{% url 'registro' %}">Registrarse</a>
+    {% endif %}
+</nav>
+<hr>
+{% if messages %}
+<ul>
+    {% for message in messages %}<li>{{ message }}</li>{% endfor %}
+</ul>
+{% endif %}
+{% block content %}{% endblock %}
+</body>
+</html>

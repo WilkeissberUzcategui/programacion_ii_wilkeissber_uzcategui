@@ -1,0 +1,11 @@
+{% extends 'transporte/base.html' %}
+{% block content %}
+<h1>Paradas</h1>
+<ul>
+    {% for parada in paradas %}
+    <li><a href="{{ parada.get_absolute_url }}">{{ parada }}</a> — {{ parada.direccion }}</li>
+    {% empty %}
+    <li>No hay paradas.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

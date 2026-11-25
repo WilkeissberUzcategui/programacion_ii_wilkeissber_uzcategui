@@ -1,0 +1,14 @@
+{% extends 'transporte/base.html' %}
+{% block content %}
+<h1>{{ parada.nombre }}</h1>
+<p>Dirección: {{ parada.direccion }}</p>
+<h2>Rutas que pasan por aquí</h2>
+<ul>
+    {% for ruta in parada.rutas.all %}
+    <li><a href="{{ ruta.get_absolute_url }}">{{ ruta }}</a></li>
+    {% empty %}
+    <li>Ninguna ruta.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'parada_list' %}">Volver</a>
+{% endblock %}

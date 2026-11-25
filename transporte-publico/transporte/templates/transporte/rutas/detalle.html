@@ -1,0 +1,32 @@
+{% extends 'transporte/base.html' %}
+{% block content %}
+<h1>{{ ruta.nombre }}</h1>
+<p>{{ ruta.origen }} → {{ ruta.destino }} · {{ ruta.distancia }} km · Tarifa ${{ ruta.tarifa }}</p>
+<p>Creada por: {{ ruta.creado_por.username }}</p>
+
+<h2>Paradas</h2>
+<ul>
+    {% for parada in ruta.paradas.all %}
+    <li><a href="{{ parada.get_absolute_url }}">{{ parada }}</a></li>
+    {% empty %}
+    <li>Sin paradas.</li>
+    {% endfor %}
+</ul>
+
+<h2>Vehículos</h2>
+<ul>
+    {% for vehiculo in ruta.vehiculos.all %}
+    <li><a href="{{ vehiculo.get_absolute_url }}">{{ vehiculo }}</a></li>
+    {% empty %}
+    <li>Sin vehículos.</li>
+    {% endfor %}
+</ul>
+
+{% if perms.transporte.change_ruta and ruta.creado_por == user or perms.transporte.delete_ruta %}
+<a href="{% url 'ruta_update' ruta.pk %}">Editar</a>
+{% endif %}
+{% if perms.transporte.delete_ruta %}
+<a href="{% url 'ruta_delete' ruta.pk %}">Eliminar</a>
+{% endif %}
+<a href="{% url 'ruta_list' %}">Volver</a>
+{% endblock %}

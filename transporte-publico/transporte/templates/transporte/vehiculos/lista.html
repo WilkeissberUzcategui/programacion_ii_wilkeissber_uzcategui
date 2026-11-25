@@ -1,0 +1,14 @@
+{% extends 'transporte/base.html' %}
+{% block content %}
+<h1>Vehículos</h1>
+{% if perms.transporte.add_vehiculo %}
+<p><a href="{% url 'vehiculo_create' %}">Nuevo vehículo</a></p>
+{% endif %}
+<ul>
+    {% for vehiculo in vehiculos %}
+    <li><a href="{{ vehiculo.get_absolute_url }}">{{ vehiculo }}</a> — Ruta: {{ vehiculo.ruta }}</li>
+    {% empty %}
+    <li>No hay vehículos.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

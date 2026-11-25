@@ -1,0 +1,10 @@
+{% extends 'transporte/base.html' %}
+{% block content %}
+<h1>Eliminar ruta</h1>
+<p>¿Seguro que quieres eliminar "{{ ruta }}"? También se eliminarán sus vehículos.</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+</form>
+<a href="{{ ruta.get_absolute_url }}">Cancelar</a>
+{% endblock %}

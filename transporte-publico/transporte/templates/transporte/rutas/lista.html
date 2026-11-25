@@ -1,0 +1,14 @@
+{% extends 'transporte/base.html' %}
+{% block content %}
+<h1>Rutas</h1>
+{% if perms.transporte.add_ruta %}
+<p><a href="{% url 'ruta_create' %}">Nueva ruta</a></p>
+{% endif %}
+<ul>
+    {% for ruta in rutas %}
+    <li><a href="{{ ruta.get_absolute_url }}">{{ ruta }}</a> — {{ ruta.origen }} → {{ ruta.destino }} (${{ ruta.tarifa }})</li>
+    {% empty %}
+    <li>No hay rutas.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
