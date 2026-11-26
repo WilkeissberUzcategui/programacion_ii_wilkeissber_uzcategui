@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, redirect, get_object_or_404
 from transporte.forms import RutaForm
-from transporte import Ruta
+from transporte.models import Ruta
 
 
 @login_required

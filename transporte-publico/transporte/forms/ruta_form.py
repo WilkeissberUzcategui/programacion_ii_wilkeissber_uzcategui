@@ -1,5 +1,5 @@
 from django import forms
-from transporte import Ruta
+from transporte.models import Ruta
 
 
 class RutaForm(forms.ModelForm):

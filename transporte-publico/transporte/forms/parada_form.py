@@ -1,5 +1,5 @@
 from django import forms
-from transporte import Parada
+from transporte.models import Parada
 
 
 class ParadaForm(forms.ModelForm):

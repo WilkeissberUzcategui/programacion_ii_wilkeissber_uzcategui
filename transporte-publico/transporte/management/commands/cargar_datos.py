@@ -4,7 +4,7 @@ from decimal import Decimal
 from django.contrib.auth.models import User, Group, Permission
 from django.core.management.base import BaseCommand
 
-from transporte import Parada, Conductor, Ruta, Vehiculo
+from transporte.models import Parada, Conductor, Ruta, Vehiculo
 
 
 class Command(BaseCommand):

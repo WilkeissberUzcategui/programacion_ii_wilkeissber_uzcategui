@@ -1,6 +1,6 @@
 from datetime import date
 from django import forms
-from transporte import Conductor
+from transporte.models import Conductor
 
 
 class ConductorForm(forms.ModelForm):
